@@ -5,6 +5,7 @@ fromRange = 1
 toRange = 15
 print(f"Guess the number ({fromRange}-{toRange})")
 rngnum = random.randint(fromRange, toRange)
+#test
 
 def intinput():
     while True:
