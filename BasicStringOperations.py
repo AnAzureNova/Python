@@ -35,3 +35,5 @@ match validity:
         print("Password is strong")
     case 3:
         print("Password is really strong")
+
+exit(0)
