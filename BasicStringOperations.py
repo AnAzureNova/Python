@@ -15,12 +15,11 @@ def check(password):
             checks["isNum"] = True
         elif not letter.isalnum():
             checks["isChar"] = True
-    validity = 0
+    vidx = 0
     for check in checks:
         if checks[check]:
-            validity += 1
-
-    return validity
+            vidx += 1
+    return vidx
 
 word = userInput("Enter password: ")
 validity = check(word)
