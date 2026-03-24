@@ -1,21 +1,27 @@
 import random
 score = 0
+isShot = False
 
 def userInput():
+    global score
+    global isShot
     while True:
         print(">", end=" ")
         usrinput = input()
-        if usrinput == "quit":
+        if usrinput == "quit" or usrinput == "exit" or usrinput == "end" or usrinput == "q" or usrinput == "stop":
             exit(0)
+        elif usrinput == "gun" and not isShot:
+            print("> You shot the opponent")
+            score = 99
+            print(f"YOUR SCORE: {score}")
+            isShot = True
         elif usrinput == "rock" or usrinput == "paper" or usrinput == "scissors":
             return usrinput
         else:
             print("> Invalid input")
 def play(playerGuess, botGuess):
     global score
-
-    print(f"# Computer: {botGuess}")
-    print(f"# YOU: {playerGuess}")
+    print(f"# YOU: {playerGuess} vs Computer: {botGuess}")
 
     match playerGuess:
         case "rock":
@@ -50,7 +56,7 @@ def play(playerGuess, botGuess):
                     return "!! DRAW !!"
 
 
-print(f"ROCK PAPER SCISSORS - [quit] to stop playing\n-----------------------------------")
+print(f"ROCK PAPER SCISSORS\n-----------------------------------")
 while True:
     print(f"YOUR SCORE: {score}")
     currRoll = random.randint(0, 2)
@@ -64,7 +70,9 @@ while True:
             botGuess = "scissors"
         case _:
             break
-    result = play(playerGuess, botGuess)
-    print(result)
+    if not isShot:
+        result = play(playerGuess, botGuess)
+        print(result)
+
 
 
