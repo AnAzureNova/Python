@@ -23,6 +23,7 @@ fact = factorial(number)
 #print(math.factorial(number))
 
 print(fact)
+exit(0)
 
 
 
