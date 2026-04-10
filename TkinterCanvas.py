@@ -70,4 +70,5 @@ draw_flag_stripes(basex = 5, basey = 5, width = 250, heigth = 150, colors = ["gr
 
 
 tkinter.mainloop()
+exit (0)
 
