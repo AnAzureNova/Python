@@ -33,7 +33,6 @@ def draw_flag_stripes(basex = 0, basey = 0, width = 250, height = 150, colors = 
                     canvas.create_rectangle(basex + (value * width), basey, basex + width + (value * width),
                                             basey + height,
                                             fill=curr_color)
-
                     value += 1
                     color_index += 1
             case _:

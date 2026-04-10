@@ -17,6 +17,7 @@ def draw_sequence(basex = 50, basey = 50, size = 50, ammount = 4, offset = 10, c
         curr_offset = index * offset
 
         canvas.create_rectangle(basex + curr_offset, basey + curr_offset, basex+size + curr_offset, basey+size + curr_offset, fill=colors[color_index])
+
         if order == "asc":
             color_index += 1
         elif order == "desc":
