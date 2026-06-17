@@ -61,7 +61,7 @@ def guess(point, comparator):
                 guessrange["from"] = point
             else:
                 guessrange["to"] = point
-            guesscache.append([point, '>'])
+            guesscache.append(point)
 
         case '<':
             print(f"Is the number lesser than {point}?")
@@ -70,7 +70,7 @@ def guess(point, comparator):
                 guessrange["to"] = point
             else:
                 guessrange["from"] = point
-            guesscache.append([point, '<'])
+            guesscache.append(point)
         case _:
             print("!! UNKNOWN ERROR")
             exit(0)
@@ -96,20 +96,12 @@ def loop():
     isSkip = False
     if not (guessrange["to"] - guessrange["from"]) - len(randguesscache) <= 1:
         isCache = True
-        while isCache:
+        while True:
             point = random.randint(guessrange["from"], guessrange["to"])
             comparator = coinflip()
-
-            x = [point, comparator]
-            if len(guesscache) > 0:
-                for y in guesscache:
-                    if y[0] == point and y[1] == comparator:
-                        isCache = True
-                        #print(f"_DEBUG: {x} IS IN CACHE - SKIPPING")
-                    else:
-                        isCache = False
-            else:
-                isCache = False
+            if point not in guesscache:
+                break
+            #print(f"_DEBUG: {point} IS IN CACHE - SKIPPING")
 
         #print(f"_DEBUG: ANS CACHE {guesscache}")
         #print(f"_DEBUG: GUESSING FROM {guessrange['from']} TO {guessrange['to']}")
@@ -123,17 +115,10 @@ def loop():
         #print(f"_DEBUG: CACHE {randguesscache}")
         isCache = True
         randguess = 0
-        while isCache:
+        while True:
             randguess = random.randint(guessrange["from"], guessrange["to"])
-            if len(randguesscache) > 0:
-                for numcheck in randguesscache:
-                    if numcheck == randguess:
-                        isCache = True
-                        #print(f"_DEBUG: {randguess} IS IN CACHE - SKIPPING")
-                    else:
-                        isCache = False
-            else:
-                isCache = False
+            if randguess not in randguesscache:
+                break
 
         print(f"The number is {randguess}?")
         ans = boolinput()
