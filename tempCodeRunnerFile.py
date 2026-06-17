@@ -1,2 +1,0 @@
-else:
-                isCache = False
